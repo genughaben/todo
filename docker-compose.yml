@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+   db:
+    image: postgres:10.10-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+        POSTGRES_DB: 'todo'
+        POSTGRES_USER: 'postgres'
+        POSTGRES_PASSWORD: 'docker'
+    volumes:
+       - ./db:/var/lib/postgresql/data
+
+   app:
+     build:
+       context: .
+     restart: always
+     depends_on:
+       - db
+     ports:
+       - "7001:7001"
+     links:
+       - db
+     volumes:
+       - ./app:/app
