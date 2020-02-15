@@ -3,7 +3,10 @@
         <title>Todo App</title>
         <style>
             .hidden {
-              display:none
+              display:none;
+            }
+            .error {
+                color:red;
             }
         </style>
     </head>
@@ -41,7 +44,7 @@
               document.getElementById('error').className = 'hidden';
             })
             .catch(function(e) {
-              document.getElementById('error').className = '';
+              document.getElementById('error').className = 'error';
             })
         }
     </script>
