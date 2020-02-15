@@ -85,3 +85,12 @@ Enter the db container executing psql using:
 ```
 >  docker exec -it example_db_1 psql -U postgres
 ```
+
+
+# Tips
+
+* Update requirements.txt from pipenv:
+
+```
+> pipenv lock -r > requirements.txt`
+```
