@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os, sys
 from flask_migrate import Migrate
 
-import settings
+import app.settings
 
 app = Flask(__name__)
 local = env_var = os.environ['LOCAL']
@@ -19,13 +19,15 @@ db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
 
+
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
     completed = db.Column(db.Boolean, nullable=False, default=False)
 
     def __repr__(self):
-        return f'<Todo {self.id} {self.description}>'
+        return f'<Todo {self.id} {self.description} {self.completed}>'
+
 
 @app.route("/todo/create", methods=['POST'])
 def create_todo():
