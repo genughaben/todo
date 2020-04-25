@@ -15,14 +15,15 @@ services:
        - ./db:/var/lib/postgresql/data
 
    app:
-     build:
-       context: .
-     restart: always
-     depends_on:
-       - db
-     ports:
-       - "7001:7001"
-     links:
-       - db
-     volumes:
-       - ./app:/app
+    container_name: todo
+    build:
+      context: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "7001:7001"
+    links:
+      - db
+    volumes:
+      - ./app:/app
