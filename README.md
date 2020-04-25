@@ -29,6 +29,23 @@ For all changes you need to be in the docker container:
 ```
 and there in the app folder (the folder that contains the migrations folder).
 
+## Init
+
+Add the dependecy and code line:
+
+```python
+from flask_migrate import Migrate
+migrate = Migrate(app, db)
+```
+
+Next, if you have not tables in your databse yet you can let Flask-Migrate create those entering:
+
+```shell
+> flask db init # (replaces use of) db.create_all()
+```
+
+An inital schema is created, much like an initial snapshot is created using git init in terms of version control.
+
 ## Add changes:
 
 1. Change your db.Model instance.
@@ -63,6 +80,14 @@ Example from e893426501d0_.py
 ```
 
 In case of a mandadorty boolean being added, you could first modify the migrations file to add the new boolean column without the non-nullable property, then handle the already existing data and finally change the new column back to being non-nullable. Finally you have if migrations script when run results the desired changes to the database.
+
+## (Todo) Working with already existing databas table
+
+* add how to here!
+
+## Resouces:
+https://alembic.sqlalchemy.org/en/latest/
+https://flask-migrate.readthedocs.io/en/latest/
 
 
 # Testing
