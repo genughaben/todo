@@ -5,24 +5,41 @@
         <link rel='stylesheet' type='text/css' href='{{ url_for("static", filename="style.css") }}' />
     </head>
     <body>
-        <!-- Add new Todo Form -->
-        <form id="form" action="/todo/create" method="post">
-            <label for="description">Create a To-Do Item</label>
-            <input type="text" id="description" name="description">
-            <input type="submit" id="submit" name="create" value="Create">
-        </form>
-        <div id='error' class='hidden'>Something weng wrong!</div>
 
-        <!-- Display Todos -->
-        <ul id='todos'>
-            {% for d in data %}
-                <li>
-                    <input data-id={{d.id}} class='check-completed' type="checkbox" {% if d.completed %} checked {% endif %}>
-                    {{d.description}}
-                    <button data-id={{d.id}} class='close'>&cross;</button>
-                </li>
-            {% endfor %}
-        </ul>
+        <!-- Todo Lists -->
+        <div class='lists-container'>
+            <ul id='todos'>
+                {% for d in lists %}
+                    <li>
+                        <!-- <input data-id={{d.id}} class='check-completed' type="checkbox" {% if d.completed %} checked {% endif %}> -->
+                        {{d.name}}
+                        <!-- <button data-id={{d.id}} class='close'>&cross;</button> -->
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class='todos-container'>
+            <!-- Add new Todo Form -->
+            <form id="form" action="/todo/create" method="post">
+                <label for="description">Create a To-Do Item</label>
+                <input type="text" id="description" name="description">
+                <input type="submit" id="submit" name="create" value="Create">
+            </form>
+            <div id='error' class='hidden'>Something weng wrong!</div>
+
+            <!-- Display Todos -->
+            <ul id='todos'>
+                {% for d in todo %}
+                    <li>
+                        <input data-id={{d.id}} class='check-completed' type="checkbox" {% if d.completed %} checked {% endif %}>
+                        {{d.description}}
+                        <button data-id={{d.id}} class='close'>&cross;</button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
 
         <!-- Imported Javascript -->
         <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
