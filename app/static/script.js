@@ -1,3 +1,5 @@
+// TODOS
+
 // Handle create
 document.getElementById('form').onsubmit = function(e) {
     e.preventDefault() // would normally reload whole page!
@@ -71,7 +73,6 @@ for (let i = 0; i < closeSpans.length; i++){
     closeSpan = closeSpans[i]
     closeSpan.onclick = function(e) {
       const todoId = e.target.dataset["id"];
-      console.log(todoId);
       fetch('/todo/' + todoId + '/delete', {
         method: 'DELETE',
       })
@@ -90,3 +91,23 @@ for (let i = 0; i < closeSpans.length; i++){
       });
   }
 }
+
+
+// TODO LISTS
+
+
+// const listSpans = document.querySelectorAll('.list');
+// for (let i = 0; i < listSpans.length; i++){
+//     listSpan = listSpans[i]
+//     listSpan.onclick = function(e) {
+//       const listId = e.target.dataset["id"];
+//       console.log(listId);
+      
+//       fetch('/lists/' + listId , {
+//         method: 'GET',
+//       })
+//       .catch(function(e) {
+//         document.getElementById('error').className = 'error';
+//       });
+//   }
+// }

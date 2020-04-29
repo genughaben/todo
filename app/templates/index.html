@@ -5,15 +5,13 @@
         <link rel='stylesheet' type='text/css' href='{{ url_for("static", filename="style.css") }}' />
     </head>
     <body>
-
         <!-- Todo Lists -->
         <div class='lists-container'>
-            <ul id='todos'>
+            <h2>Todo Lists</h2>
+            <ul id='lists'>
                 {% for d in lists %}
                     <li>
-                        <!-- <input data-id={{d.id}} class='check-completed' type="checkbox" {% if d.completed %} checked {% endif %}> -->
-                        {{d.name}}
-                        <!-- <button data-id={{d.id}} class='close'>&cross;</button> -->
+                        <a href='{{ d.id }}'>{{d.name}}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -21,9 +19,10 @@
 
 
         <div class='todos-container'>
+            <h2>Todo list: {{ active_list.name }}</h2>
             <!-- Add new Todo Form -->
             <form id="form" action="/todo/create" method="post">
-                <label for="description">Create a To-Do Item</label>
+                <label for="description">Create a To-Do Item: </label>
                 <input type="text" id="description" name="description">
                 <input type="submit" id="submit" name="create" value="Create">
             </form>
@@ -31,7 +30,7 @@
 
             <!-- Display Todos -->
             <ul id='todos'>
-                {% for d in todo %}
+                {% for d in todos %}
                     <li>
                         <input data-id={{d.id}} class='check-completed' type="checkbox" {% if d.completed %} checked {% endif %}>
                         {{d.description}}

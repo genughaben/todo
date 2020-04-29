@@ -15,12 +15,6 @@ li {
     clear: both;
 }
 
-div.lists-container {
-    clear: both;
-    float: left;
-    border: 1px solid black;
-}
-
 li button.close {
     cursor: pointer;
     border: none;
@@ -32,4 +26,16 @@ li button.close {
     font-size: 20px;
   }
   
-.close:hover {background: #bbb;}
+.close:hover {
+    background: #bbb;
+}
+
+
+.container {
+    width: 800px;
+}
+
+.lists-container, .todos-container {
+    display: inline-block;
+    vertical-align: top;
+}
